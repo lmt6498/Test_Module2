@@ -63,7 +63,14 @@ public class Manage {
         int check = -1;
         for (PhoneBook s : list) {
             if (s.getPhoneNumber().equals(phone)) {
-                list.remove(s);
+                System.out.println("Bạn có muốn xóa?");
+                System.out.println("1. Có");
+                System.out.println("2. Không");
+                int choice = Integer.parseInt(sc.nextLine());
+                switch (choice) {
+                    case 1 -> list.remove(s);
+                    case 2 -> System.err.println("Số điện thoại chưa được xóa!");
+                }
                 check = 1;
             }
         }
