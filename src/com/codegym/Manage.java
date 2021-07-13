@@ -60,23 +60,7 @@ public class Manage {
     public void deletePhone() throws IOException {
         System.out.println("Nhập số điện thoại cần xóa: ");
         String phone = sc.nextLine();
-        int check = -1;
-        for (PhoneBook s : list) {
-            if (s.getPhoneNumber().equals(phone)) {
-                System.out.println("Bạn có muốn xóa?");
-                System.out.println("1. Có");
-                System.out.println("2. Không");
-                int choice = Integer.parseInt(sc.nextLine());
-                switch (choice) {
-                    case 1 -> list.remove(s);
-                    case 2 -> System.err.println("Số điện thoại chưa được xóa!");
-                }
-                check = 1;
-            }
-        }
-        if (check == -1) {
-            System.err.println("Không tìm thấy số trong danh bạ!");
-        }
+        list.removeIf(x -> x.getPhoneNumber().equals(phone));
         ReadWriteFileCSV.writeFile("src/PhoneBook.csv", list);
     }
 
